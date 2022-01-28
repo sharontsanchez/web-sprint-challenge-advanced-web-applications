@@ -28,6 +28,15 @@ const View = (props) => {
     };
 
     const handleEdit = (article) => {
+        axiosWithAuth()
+        .put(`/articles/${article.id}`, article)
+        .then(res => {
+            setArticles(res.data)
+            setEditing(false)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     const handleEditSelect = (id)=> {
@@ -52,7 +61,8 @@ const View = (props) => {
                                 handleDelete={() => {
                                     handleDelete(article.id);
                                 }}
-                                handleEditSelect={handleEditSelect}/>
+                                handleEditSelect={() => {handleEditSelect(article.id)}}
+                                />
                         </ArticleDivider>
                     })
                 }
