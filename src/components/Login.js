@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from "react-router-dom";
 
 const initialState = {
     formValues: {
@@ -13,6 +14,8 @@ const initialState = {
 const Login = () => {
 
     const [formState, setFormState] = useState(initialState)
+
+    const { push } = useHistory()
 
     const handleFormChange = (e) => {
         setFormState({
@@ -28,7 +31,8 @@ const Login = () => {
         axios
         .post('http://localhost:5000/api/login', formState.formValues)
         .then(res => {
-            console.log(res)
+           localStorage.setItem("token", res.data.token)
+           push('/view')
         })
         .catch(err => {
             setFormState({
@@ -47,6 +51,7 @@ const Login = () => {
                     <input
                         id="username"
                         name="username"
+                        type="text"
                         placeholder="username"
                         value={formState.formValues.username}
                         onChange={handleFormChange}
@@ -56,6 +61,7 @@ const Login = () => {
                     <input
                         id="password"
                         name="password"
+                        type="password"
                         placeholder="password"
                         value={formState.formValues.password}
                         onChange={handleFormChange}
