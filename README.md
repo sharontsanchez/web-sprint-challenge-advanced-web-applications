@@ -13,9 +13,9 @@ You are not allowed to collaborate during the sprint challenge.
 In this challenge you will create a login page and request a token from the server that you'll use to send all other requests to the server. You will then be able to fetch the article data array, update data, and delete data.
 
 ## Project Setup
-[ ] Run npm install to install your dependencies.
-[ ]  Run npm start to run your frontend and backend code automatically.
-[ ]  Note your backend code will run automatically when your run npm start. There is no need to seperately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
+[x] Run npm install to install your dependencies.
+[x]  Run npm start to run your frontend and backend code automatically.
+[x]  Note your backend code will run automatically when your run npm start. There is no need to seperately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
 
 ## Project Instructions
 In this project, you will demonstrate your mastery of these skills by creating **a login page** and **basic CRUD application.** You will implement basic security using **token authentication** and build private routes within the application.
@@ -118,8 +118,28 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain what a token is used for.
 
+A token is a highly secure format used to transmit sensitive information between two parties in a compact and self-contained manner. Tokens are often used to strengthen authentication processes, whether that be within a website or application.
+A typical token consists of three key elements:
+. Header that defines the type of token and algorithm used.
+. Payload that contains information about the user and other metadata.
+. Signature that verifies the identity of the sender and the authenticity of the message.
+When sensitive data is transmitted via token, users can rest assured knowing their private information is treated as such. This is crucial for any sort of payment information, medical data, or login credentials.
+
 2. What steps can you take in your web apps to keep your data secure?
+
+When your web app have implemented protected routes using an authentication token to secure your data. Routes that should only render with authentication as we build our web apps. Usually, the client will make a login request, sending the server the user's username and password. Then, the server will check those credentials against the database, and if it can authenticate the user, it will return a token. Once we have this token, we can add two layers of protection to our app. One uses protected routes, and the other sends an authentication header with our API calls
 
 3. Describe how web servers work.
 
+The term "web server" can mean 1) a computer that stores the code for a website or 2) a program that runs on such a computer.
+
+The physical computer device that we call a web server (like the one shown below) is connected to the internet. A web server stores the code for different websites to be shared across the world at all times. When we load the code for our websites, or web apps, on a server like this, we say that the server is "hosting" our website/app.
+
+However, the server itself needs some code to tell it what to do. That software program is called - a web server! Its main purpose is to "serve" web pages it retrieves from your project code to users upon request.
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+Create - POST (usually used for logging in, logging out and adding information to the database). 
+Read - GET (usually used for requesting database information from the server). 
+Update - PATCH/PUT (usually used form editing or altering database information). 
+Delete = DELETE (used for removing database information--use wisely)
