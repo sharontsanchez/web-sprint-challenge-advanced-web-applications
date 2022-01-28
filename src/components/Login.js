@@ -5,49 +5,52 @@ import { useHistory } from "react-router-dom";
 
 const initialState = {
     formValues: {
-        username: '',
-        password: '',
+        username: "",
+        password: "",
     },
-    errorMessage: ''
-}
+    errorMessage: "",
+};
 
 const Login = () => {
 
-    const [formState, setFormState] = useState(initialState)
+    const [formState, setFormState] = useState(initialState);
 
-    const { push } = useHistory()
+    const { push } = useHistory();
 
     const handleFormChange = (e) => {
         setFormState({
             formValues: {
                 ...formState.formValues,
-                [e.target.name]: e.target.value
+                [e.target.name]: e.target.value,
             },
-            errorMessage: ''
-        })
-    }
+            errorMessage: '',
+        });
+    };
+
     const handleLogin = (e) => {
         e.preventDefault()
         axios
-        .post('http://localhost:5000/api/login', formState.formValues)
+        .post('http://localhost:9000/api/login', formState.formValues)
         .then(res => {
            localStorage.setItem("token", res.data.token)
-           push('/view')
+           push('/view');
         })
-        .catch(err => {
+        .catch((err) => {
             setFormState({
                 formValues: initialState.formValues,
                 errorMessage: err.response.data.error
-            })
-        })
+            });
+        });
+    };
 
-    }
-    return(<ComponentContainer>
+    return(
+    <ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
             <form onSubmit={handleLogin}>
-                <label htmlFor="username">Username:
+                <label htmlFor="username">
+                    Username:
                     <input
                         id="username"
                         name="username"
@@ -57,7 +60,8 @@ const Login = () => {
                         onChange={handleFormChange}
                     />
                 </label>
-                <label htmlFor="password">Password: 
+                <label htmlFor="password">
+                    Password: 
                     <input
                         id="password"
                         name="password"

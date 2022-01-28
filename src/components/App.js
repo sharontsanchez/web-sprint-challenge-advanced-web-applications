@@ -16,19 +16,19 @@ const App = () => {
       <Header/>
       <Switch>
         <RouteContainer>
-          <Route exact path="/">
-            <Login/>
-          </Route>   
-          <PrivateRoute path="/view" component={View}/>
+          <PrivateRoute path="/logout" component={Logout} />
+          <PrivateRoute path="/view" component={View} />
           <Route path="/login">
-            <Login/>
-          </Route> 
-          <PrivateRoute path="/logout" component={Logout}/> 
+            <Login />
+          </Route>
+          <Route exact path="/">
+            <Login />
+          </Route>
         </RouteContainer>
       </Switch>
     </AppContainer>
-  )
-}
+  );
+};
 
 export default App;
 

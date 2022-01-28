@@ -53,19 +53,22 @@ const View = (props) => {
         <ContentContainer flexDirection="row">
             <ArticleContainer>
                 {
-                    articles.map(article => {
-                        return <ArticleDivider key={article.id}>
+                    articles.map((article) => {
+                        return (
+                        <ArticleDivider key={article.id}>
                             <Article 
                                 key={article.id} 
                                 article={article} 
                                 handleDelete={() => {
                                     handleDelete(article.id);
                                 }}
-                                handleEditSelect={() => {handleEditSelect(article.id)}}
+                                handleEditSelect={() => {
+                                    handleEditSelect(article.id)
+                                }}
                                 />
                         </ArticleDivider>
-                    })
-                }
+                        );
+                    })}
             </ArticleContainer>
             
             {
