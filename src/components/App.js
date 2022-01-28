@@ -1,21 +1,35 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import styled from 'styled-components';
+import PrivateRoute from './PrivateRoute';
 
 import Header from './Header';
 import BloomHeader from './BloomHeader';
+import View from './View';
 import Login from './Login';
+import Logout from './Logout'
 
 const App = () => {
   return (
     <AppContainer>
       <BloomHeader/>
       <Header/>
-      <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
-      </RouteContainer>
+      <Switch>
+        <RouteContainer>
+          <Route exact path="/">
+            <Login/>
+          </Route>   
+          <Route path="/view">
+            <View/>
+          </Route>  
+          <Route path="/login">
+            <Login/>
+          </Route> 
+          <Route path="/logout">
+            <Logout/>
+          </Route>   
+        </RouteContainer>
+      </Switch>
     </AppContainer>
   )
 }
