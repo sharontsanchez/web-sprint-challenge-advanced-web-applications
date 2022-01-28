@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/login">
             <Login/>
           </Route> 
-          <PrivateRoute path="/logout" component={logout}/> 
+          <PrivateRoute path="/logout" component={Logout}/> 
         </RouteContainer>
       </Switch>
     </AppContainer>
